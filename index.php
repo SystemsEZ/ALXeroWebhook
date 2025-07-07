@@ -1,6 +1,6 @@
 <?php
-$webhook_secret = getenv("+yZzHTa/7Cz4Pvyr+VCDQdPtW3nuZIKdFZ8mHy5232kjOQ8E4kil8ViAMRqO2FQeN/fKGHKmiCvfoSYDs1JP0Q==");
-$zohoWebhookUrl = getenv("https://flow.zoho.com/885711007/flow/webhook/incoming?zapikey=1001.f9fb9a68b0e970672209cca8bc6d5774.7c55897236eb0383e19f28cecc014bba&isdebug=false");
+$webhook_secret = getenv("XERO_SECRET");
+$zohoWebhookUrl = getenv("ZAPI_WEBHOOK_URL");
 
 $raw_body = file_get_contents("php://input");
 $received_signature = $_SERVER['HTTP_XXEROSIGNATURE'] ?? '';
