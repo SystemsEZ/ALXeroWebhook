@@ -6,6 +6,9 @@ $raw_body = file_get_contents("php://input");
 $received_signature = $_SERVER['HTTP_XXEROSIGNATURE'] ?? '';
 $expected_signature = base64_encode(hash_hmac('sha256', $raw_body, $webhook_secret, true));
 
+file_put_contents("php://stderr", "Expected: " . $expected_signature . "\n", FILE_APPEND);
+file_put_contents("php://stderr", "Received: " . $received_signature . "\n", FILE_APPEND);
+
 if (hash_equals($expected_signature, $received_signature)) {
     // Forward to Zoho Flow
     $ch = curl_init($zohoWebhookUrl);
